@@ -1,0 +1,99 @@
+{% extends 'base/base.html' %}
+{%load static %}
+{%block content%}
+
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">
+
+
+<div class="row" >
+<div class="center">
+<h4 class="blue-text" style="font-family: 'Pacifico', cursive;margin: 4rem 0 4% 0;font-size:4rem">Looking for a room! </h4>
+<h4 class="blue-text" style="font-family: 'Pacifico', cursive;margin: 0 0 4% 0;line-height: 25%;font-size:2.5rem">We have it ready for you...</h4>
+</div>
+
+<div class="row" style="margin-top:3%">
+<div class="container">
+    <h3 class="center" style="font-family: 'Gloria Hallelujah', cursive;margin-bottom:7%;margin-top:5%">Services at your Doorstep</h3>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">local_airport</i><br>
+Airport Pick and Drop
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">free_breakfast</i><br>
+Free Breakfast
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">wifi</i><br>
+Free High speed wifi
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">live_tv</i><br>
+LED TV with Tata Sky
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">restaurant</i><br>
+24&#10006;7 Local Restaurant
+</div>
+</div>
+</div>
+<div class="col l2 m3 s4">
+<div class="card-panel teal lighten-4">
+<div class="center">
+<i class="material-icons red-text small">accessibility</i><br>
+Free Gymnasium
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+<div class="row">
+    <div class="container">
+    <h3 class="center" style="font-family: 'Gloria Hallelujah', cursive;margin-bottom:7%;margin-top:5%">Room for Every Size & Need</h3>
+  {% for room in rooms %}
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{% static room.room_image %}" alt="room.room_image">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red white-text" style="font-size:0.8rem">&#x20b9; {{ room.price }}</a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title brown-text">
+                        <a href="{% url 'room_detail' room.pk %}">  {{ room.room_type }}    </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+  {% empty %}
+    <li>No rooms found.</li>
+  {% endfor %}
+
+
+    </div>
+</div>
+
+{% endblock %}

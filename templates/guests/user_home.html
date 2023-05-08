@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-4 mb-4">Welcome back, {{ user.first_name }}!</h1>
+  <h2 class="mb-4">Your bookings:</h2>
+  <div class="row">
+    {% if bookings %}
+    {% for booking in bookings %}
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ booking.room.room_type }} - {{ booking.room.room_number }}</h5>
+          <p class="card-text">Check-in date: {{ booking.check_in }}</p>
+          <p class="card-text">Check-out date: {{ booking.check_out }}</p>
+          <p class="card-text">Total payment: ${{ booking.get_total_payment }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>You have no bookings yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

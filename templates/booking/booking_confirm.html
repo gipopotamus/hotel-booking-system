@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Booking confirmation</h1>
+  <p>Thank you for your booking!</p>
+  <p>Your booking details:</p>
+  <ul>
+    <li>Room number: {{ booking.room.room_number }}</li>
+    <li>Room type: {{ booking.room.room_type }}</li>
+    <li>Check-in date: {{ booking.check_in }}</li>
+    <li>Check-out date: {{ booking.check_out }}</li>
+    <li>Total Payment: {{booking.get_total_payment }} </li>
+  </ul>
+{% endblock %}

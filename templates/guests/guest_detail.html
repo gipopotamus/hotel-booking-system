@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Guest Detail</h1>
+<!---->
+
+  <dl>
+    <dt>First Name</dt>
+    <dd>{{ guest.first_name }}</dd>
+    <dd>{{ guest.password }}</dd>
+    <dt>Last Name</dt>
+    <dd>{{ guest.last_name }}</dd>
+
+    <dt>Email</dt>
+    <dd>{{ guest.email }}</dd>
+
+    <dt>Phone Number</dt>
+    <dd>{{ guest.phone_number }}</dd>
+  </dl>
+{% endblock %}
