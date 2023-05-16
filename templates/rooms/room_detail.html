@@ -1,7 +1,11 @@
 {% extends 'base/base.html' %}
-
+ {%load static %}
 {% block content %}
-  <h1>Room number {{ room.room_number }}</h1>
-  <p>Number of beds: {{ room.room_type }}</p>
-  <p>Price per night: {{ room.price }}</p>
+<div class="content">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <h1>Room number {{ room.room_number }}</h1>
+    <p>Number of beds: {{ room.room_type }}</p>
+    <p>Price per night: {{ room.price }}</p>
+  </div>
+
 {% endblock %}

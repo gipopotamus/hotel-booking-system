@@ -14,8 +14,11 @@ from guest.models import Guest
 
 class GuestRegisterView(generic.CreateView):
     form_class = RegistrationForm
-    success_url = reverse_lazy("guest:guest_list")
+    success_url = reverse_lazy("guest:user_home")
     template_name = "guests/registration.html"
+
+    def get_success_url(self):
+        return reverse_lazy('guest:user_home')
 
 
 class GuestUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -34,7 +37,7 @@ class GuestUpdateView(LoginRequiredMixin, generic.UpdateView):
 class GuestLoginView(LoginView):
     form_class = LoginForm
     template_name = 'guests/login.html'
-    success_url = reverse_lazy("guest:guest_list")
+    success_url = reverse_lazy("user_home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,7 +50,7 @@ class GuestLoginView(LoginView):
 class LogoutView(generic.View):
     def get(self, request):
         logout(request)
-        return redirect('guests/login')
+        return redirect('homepage')
 
 
 @method_decorator(login_required, name='dispatch')

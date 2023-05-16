@@ -6,8 +6,10 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js'></script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
      <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
@@ -18,8 +20,9 @@ top: 53px !important;
 width:190px !important;
       }
     </style>
-    <body>
+    <body class="wrapper">
 <nav style="background-color: dodgerblue">
+<!--    MAIN MENU-->
     <div class="nav-wrapper container">
       <a href="/" class="brand-logo center" style="font-family: 'algerian';font-size:2rem"><i class="material-icons" style="font-size:2rem">hotel</i>Room Slotter </a>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -27,9 +30,18 @@ width:190px !important;
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/booking/create">Booking </a></li>
+          {% if not request.user.is_authenticated %}
+      <li><a href="/guest/login" class="white-text"><i class="material-icons left red-text text-lighten-2">login</i> Login</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a href="/guest/signup" class="white-text"><i class="material-icons left red-text text-lighten-2">room_service</i> Sign up</a></li>
+    {% else %}
+        <li><a href="/guest/logout"><i class="material-icons left red-text text-lighten-2">exit_to_app</i> Logout</a></li>
+          <li><a href="/guest/user_home/"><i class="material-icons left red-text text-lighten-2">home</i> profile</a></li>
+     {% endif %}
       </ul>
     </div>
   </nav>
+<!--MOBILE MENU-->
     <ul id="slide-out" class="side-nav">
 
         <li><a href="/">Home</a></li>
@@ -46,6 +58,7 @@ width:190px !important;
     <li><a href="/guest/signup" class="blue-text"><i class="material-icons left red-text text-lighten-2">room_service</i> Sign up</a></li>
     {% else %}
         <li><a href="/guest/logout"><i class="material-icons left red-text text-lighten-2">exit_to_app</i> Logout</a></li>
+        <li><a href="/guest/user_home/"><i class="material-icons left red-text text-lighten-2">home</i> profile</a></li>
      {% endif %}
               </ul>
             </div>
@@ -62,36 +75,39 @@ width:190px !important;
         <li><a href="/guest/logout"> <i class="material-icons left red-text text-lighten-2">exit_to_app</i>Logout</a></li>
     </ul>
 {% block content %}
-
+<!-- FOOTER-->
 {%endblock %}
-        <footer class="page-footer" style="background-color: dodgerblue">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text" style="font-family: 'Cookie';">Room Slots</h5>
-                <p class="grey-text text-lighten-4">Get your room booked in seconds with amazing offers.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text" style="font-family:'Times New Roman'">Important Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/booking/create">booking</a></li>
-                  {% if not request.user.is_authenticated %}
-                  <li><a class="grey-text text-lighten-3" href="/guest/login">Login</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/guest/signup">Signup</a></li>
-                  {% else %}
-                  <li><a class="grey-text text-lighten-3" href="/logout">Logout</a></li>
-                  {% endif %}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2020 All right reserved
-            </div>
-          </div>
-        </footer>
+
+<footer class="page-footer fixed-bottom" style="background-color: dodgerblue">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text" style="font-family: 'Cookie';">Room Slots</h5>
+        <p class="grey-text text-lighten-4">Get your room booked in seconds with amazing offers.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text" style="font-family:'Times New Roman'">Important Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
+          <li><a class="grey-text text-lighten-3" href="/booking/create">Booking</a></li>
+          {% if not request.user.is_authenticated %}
+            <li><a class="grey-text text-lighten-3" href="/guest/login">Login</a></li>
+            <li><a class="grey-text text-lighten-3" href="/guest/signup">Signup</a></li>
+          {% else %}
+            <li><a class="grey-text text-lighten-3" href="/logout">Logout</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copyright">
+    <div class="container fixed-bottom">
+      © 2020 All right reserved
+    </div>
+  </div>
+</footer>
+
     <!-- Compiled and minified JavaScript -->
     <script>
       $(".button-collapse").sideNav();
