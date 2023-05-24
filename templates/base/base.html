@@ -28,8 +28,8 @@ width:190px !important;
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Home</a></li>
         <li><a href="/booking/create">Booking </a></li>
+        <li><a class="grey-text text-lighten-3" href="/reviews/">Reviews</a></li>
           {% if not request.user.is_authenticated %}
       <li><a href="/guest/login" class="white-text"><i class="material-icons left red-text text-lighten-2">login</i> Login</a></li>
     <li class="divider" tabindex="-1"></li>
@@ -46,6 +46,7 @@ width:190px !important;
 
         <li><a href="/">Home</a></li>
         <li><a href="/booking/create">Booking</a></li>
+        <li><a href="/reviews/">Reviews</a></li>
       <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
           <li style="margin-left:18px">
@@ -90,6 +91,7 @@ width:190px !important;
         <ul>
           <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
           <li><a class="grey-text text-lighten-3" href="/booking/create">Booking</a></li>
+          <li><a class="grey-text text-lighten-3" href="/reviews/">Reviews</a></li>
           {% if not request.user.is_authenticated %}
             <li><a class="grey-text text-lighten-3" href="/guest/login">Login</a></li>
             <li><a class="grey-text text-lighten-3" href="/guest/signup">Signup</a></li>

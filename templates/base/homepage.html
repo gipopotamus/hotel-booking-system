@@ -78,7 +78,7 @@ Free Gymnasium
         <div class="col l4 m6 s12">
             <div class="card">
                 <div class="card-image">
-                    <img src="{% static room.room_image %}" alt="room.room_image">
+                    <img src="{{ room.room_image.url }}" alt="room.room_image">
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light red white-text" style="font-size:0.8rem">&#x20b9; {{ room.price }}</a>
                 </div>
                 <div class="card-content">

@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from room.views import RoomListView, RoomDetailView
+from django.conf.urls.static import static
+from django.conf import settings
+
+
 urlpatterns = [
     path('', RoomListView.as_view(), name='homepage'),
     path('admin/', admin.site.urls),
@@ -23,4 +27,5 @@ urlpatterns = [
     path('guest/', include('guest.urls')),
     path('rooms/', include('room.urls')),
     path('room/<int:pk>', RoomDetailView.as_view(), name='room_detail'),
-]
+    path('reviews/', include('reviews.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
