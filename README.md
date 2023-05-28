@@ -11,3 +11,19 @@
 Технологии: Python, Django, SQLite3
 
 
+Как запустить:
+```shell
+git clone
+```
+
+```shell
+cd rksp-hotel
+```
+
+```python
+pip install -r requirements.txt
+```
+
+```python
+python manage.py runserver
+```
