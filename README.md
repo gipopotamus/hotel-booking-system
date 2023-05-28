@@ -13,7 +13,7 @@
 
 Как запустить:
 ```shell
-git clone
+git clone https://github.com/gipopotamus/rksp-hotel.git
 ```
 
 ```shell
